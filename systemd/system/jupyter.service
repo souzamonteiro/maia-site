@@ -1,0 +1,15 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/home/coder/jupyter_env/bin/jupyter-notebook --config=/home/coder/.jupyter/jupyter_notebook_config.py
+User=coder
+Group=coder
+WorkingDirectory=/home/coder
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

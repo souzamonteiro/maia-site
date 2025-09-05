@@ -1,0 +1,25 @@
+[Unit]
+Description=Overleaf Community Edition
+After=network.target docker.service
+Requires=docker.service
+StartLimitIntervalSec=0:cite[1]:cite[7]
+
+[Service]
+Type=simple
+User=coder
+WorkingDirectory=/home/coder/overleaf-toolkit
+ExecStart=/home/coder/overleaf-toolkit/bin/up
+Restart=always
+RestartSec=10
+KillMode=process:cite[1]:cite[3]
+
+# Configurações de ambiente (opcional)
+Environment=OVERLEAF_PORT=8877
+Environment=SHARELATEX_LISTEN_IP=0.0.0.0
+
+# Limite de recursos (opcional)
+MemoryLimit=2G
+CPUQuota=200%
+
+[Install]
+WantedBy=multi-user.target
