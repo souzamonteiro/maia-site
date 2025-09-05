@@ -1,0 +1,16 @@
+[Unit]
+Description=TightVNC Remote Desktop Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=coder
+Environment="HOME=/home/coder"
+ExecStartPre=/bin/sh -c '/usr/bin/tightvncserver -kill :1 > /dev/null 2>&1 || :'
+ExecStart=/usr/bin/tightvncserver -geometry 1280x720 -depth 16 :1
+ExecStop=/usr/bin/tightvncserver -kill :1
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

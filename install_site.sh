@@ -7,4 +7,4 @@ echo "Run this script using sudo and into maia-site directory."
 
 cp -rf * /var/www/www.maiascript.com/
 
-chown -R www-data.www-data /var/www/*
+chown -R www-data:www-data /var/www/*

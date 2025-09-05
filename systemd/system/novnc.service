@@ -1,0 +1,18 @@
+[Unit]
+Description=noVNC - HTML5 VNC Client
+After=network.target vncserver.service
+Wants=vncserver.service
+
+[Service]
+Type=simple
+User=coder
+Environment="HOME=/home/coder"
+# Ajuste o caminho conforme a instalação do noVNC
+ExecStart=/snap/bin/novnc --vnc localhost:5901 --listen 6080
+# Ou se estiver usando uma instalação via npm:
+# ExecStart=/usr/bin/websockify --web /usr/share/novnc 6080 localhost:5901
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
