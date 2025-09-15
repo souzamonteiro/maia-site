@@ -4,10 +4,10 @@ Description=Jupyter Notebook
 [Service]
 Type=simple
 PIDFile=/run/jupyter.pid
-ExecStart=/home/coder/jupyter_env/bin/jupyter-notebook --config=/home/coder/.jupyter/jupyter_notebook_config.py
+ExecStart=/home/coder/jupyter_env/bin/jupyter-notebook --config=/home/coder/.jupyter/jupyter_notebook_config.py --notebook-dir=/home/coder/notebooks
 User=coder
 Group=coder
-WorkingDirectory=/home/coder
+WorkingDirectory=/home/coder/notebooks
 Restart=always
 RestartSec=10
 
